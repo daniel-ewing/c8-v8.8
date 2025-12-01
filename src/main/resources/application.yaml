@@ -1,0 +1,52 @@
+### Local C8 Cluster
+camunda:
+  client:
+    mode: self-managed
+    auth:
+#      method: none
+
+#      method: basic
+#      username: demo
+#      password: demo
+
+      method: oidc
+      audience: orchestration-api
+      client-id: orchestration
+      client-secret: Camunda1
+#      credentials-cache-path: $HOME/.camunda/credentials
+      token-url: https://c8.local/auth/realms/camunda-platform/protocol/openid-connect/token
+#      scope: # Used with some OIDC providers like MS Entra
+    ca-certificate-path: /home/administrator/software/camunda/camunda-platform-8/certificates/c8.crt
+    execution-threads: 1
+    grpc-address: https://c8.local
+    prefer-rest-over-grpc: true
+    rest-address: https://c8.local/orchestration
+#    tenant-id: <default>
+    worker:
+      defaults:
+        stream-enabled: false
+#        tenant-ids: <default>
+#        stream-timeout: PT9s
+#        poll-interval: PT0.1S
+#        request-timeout: PT9s
+#        max-jobs-active: 32
+        name: c8-v8.8-worker
+
+#camunda:
+#  client:
+#    mode: saas
+#    auth:
+#      client-id:
+#      client-secret:
+#    cloud:
+#      cluster-id:
+#      region: lpp-1
+##    zeebe:
+##      defaults:
+##        stream-enabled: true
+
+logging:
+#  file:
+#    path: ./logs           # specify a path to write to file, otherwise it defaults to the console.
+  level:
+    org.example.c8: DEBUG
