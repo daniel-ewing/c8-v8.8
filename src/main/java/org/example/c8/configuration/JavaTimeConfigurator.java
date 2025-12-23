@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 @Component
 public class JavaTimeConfigurator {
-    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS";
 
     public static String getDateTime() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT));
