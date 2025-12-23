@@ -18,19 +18,19 @@ camunda:
 #      scope: # Used with some OIDC providers like MS Entra
     ca-certificate-path: /home/administrator/software/camunda/camunda-platform-8/certificates/c8.crt
     execution-threads: 1
-    grpc-address: https://c8.local
+    grpc-address: https://orchestration.c8.local
     prefer-rest-over-grpc: true
     rest-address: https://c8.local/orchestration
 #    tenant-id: <default>
     worker:
       defaults:
-        stream-enabled: false
+#        stream-enabled: false
 #        tenant-ids: <default>
 #        stream-timeout: PT9s
 #        poll-interval: PT0.1S
 #        request-timeout: PT9s
 #        max-jobs-active: 32
-        name: c8-v8.8-worker
+        name: c8-worker-1
 
 #camunda:
 #  client:

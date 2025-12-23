@@ -5,11 +5,11 @@ import io.camunda.client.api.response.ActivatedJob;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.example.c8.Application.isLogJobEnabled;
+import static org.example.c8.configuration.JavaTimeConfigurator.getDateTime;
 import static org.example.c8.utilities.Loggers.*;
 
 @Component
@@ -25,7 +25,7 @@ public class SetVariables3 {
 
         Map<String, Object> variablesMap = new HashMap<>();
         variablesMap.put("aBoolean1", true);
-        variablesMap.put("aDate1", new Date());
+        variablesMap.put("aDate1", getDateTime());
 
         if (log.isDebugEnabled()) logDebugExitJob(methodName, job);
         return variablesMap;
