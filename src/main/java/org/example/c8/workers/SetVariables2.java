@@ -17,16 +17,16 @@ public class SetVariables2 {
 
     @JobWorker(type = "setVariables2")
     public Map<String, Object> handleSetVariables2(final ActivatedJob job) {
-        String methodName = "handleSetVariables2";
+        final String methodName = "handleSetVariables2";
 
-        if (log.isDebugEnabled()) logDebugEnterJob(methodName, job);
+        if (log.isDebugEnabled()) log.debug("-----> {}: Enter job {} of instance {}",  methodName, job.getKey(), job.getProcessInstanceKey());
         if (isLogJobEnabled) logJob(methodName, job, null);
 
         Map<String, Object> variablesMap = new HashMap<>();
         variablesMap.put("aLong1", 21474836478L);
         variablesMap.put("aDouble1", 10293.84756D);
 
-        if (log.isDebugEnabled()) logDebugExitJob(methodName, job);
+        if (log.isDebugEnabled()) log.debug("-----> {}: Exit job {} of instance {}",  methodName, job.getKey(), job.getProcessInstanceKey());
         return variablesMap;
     }
 }

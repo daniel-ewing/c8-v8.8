@@ -11,7 +11,8 @@ camunda:
 
       method: oidc
       audience: orchestration-api
-      client-id: orchestration
+      client-id: job-worker # This can be used with CHC 13.2.0+ where a new client is easily configured in the values.yaml
+#      client-id: orchestration  This can be used with CHC 13.0.0+ where a new client is not configurable in the values.yaml
       client-secret: Camunda1
 #      credentials-cache-path: $HOME/.camunda/credentials
       token-url: https://c8.local/auth/realms/camunda-platform/protocol/openid-connect/token
@@ -49,4 +50,5 @@ logging:
 #  file:
 #    path: ./logs           # specify a path to write to file, otherwise it defaults to the console.
   level:
-    org.example.c8: DEBUG
+    org.example: INFO
+#    org.example.c8: DEBUG
