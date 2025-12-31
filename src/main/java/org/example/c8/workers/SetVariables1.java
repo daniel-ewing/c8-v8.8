@@ -15,9 +15,9 @@ public class SetVariables1 {
 
     @JobWorker(type = "setVariables1", autoComplete = false)
     public void handleSetVariables1(final JobClient client, final ActivatedJob job) {
-        String methodName = "handleSetVariables1";
+        final String methodName = "handleSetVariables1";
 
-        if (log.isDebugEnabled()) logDebugEnterJob(methodName, job);
+        if (log.isDebugEnabled()) log.debug("-----> {}: Enter job {} of instance {}",  methodName, job.getKey(), job.getProcessInstanceKey());
         if (isLogJobEnabled) logJob(methodName, job, null);
 
         String variables =
@@ -37,6 +37,6 @@ public class SetVariables1 {
                     }
                 });
 
-        if (log.isDebugEnabled()) logDebugExitJob(methodName, job);
+        if (log.isDebugEnabled()) log.debug("-----> {}: Exit job {} of instance {}",  methodName, job.getKey(), job.getProcessInstanceKey());
     }
 }

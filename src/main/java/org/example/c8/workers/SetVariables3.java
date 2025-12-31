@@ -18,16 +18,16 @@ public class SetVariables3 {
 
     @JobWorker(type = "setVariables3")
     public Map<String, Object> handleSetVariables3(final ActivatedJob job) {
-        String methodName = "handleSetVariables3";
+        final String methodName = "handleSetVariables3";
 
-        if (log.isDebugEnabled()) logDebugEnterJob(methodName, job);
+        if (log.isDebugEnabled()) log.debug("-----> {}: Enter job {} of instance {}",  methodName, job.getKey(), job.getProcessInstanceKey());
         if (isLogJobEnabled) logJob(methodName, job, null);
 
         Map<String, Object> variablesMap = new HashMap<>();
         variablesMap.put("aBoolean1", true);
         variablesMap.put("aDate1", getDateTime());
 
-        if (log.isDebugEnabled()) logDebugExitJob(methodName, job);
+        if (log.isDebugEnabled()) log.debug("-----> {}: Exit job {} of instance {}",  methodName, job.getKey(), job.getProcessInstanceKey());
         return variablesMap;
     }
 }

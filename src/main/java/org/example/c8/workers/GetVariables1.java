@@ -16,9 +16,9 @@ import static org.example.c8.utilities.Loggers.*;
 public class GetVariables1 {
     @JobWorker(type = "getVariables1", autoComplete = false)
     public void handleGetVariables1(final JobClient client, final ActivatedJob job) {
-        String methodName = "handleGetVariables1";
+        final String methodName = "handleGetVariables1";
 
-        if (log.isDebugEnabled()) logDebugEnterJob(methodName, job);
+        if (log.isDebugEnabled()) log.debug("-----> {}: Enter job {} of instance {}",  methodName, job.getKey(), job.getProcessInstanceKey());
         if (isLogJobEnabled) logJob(methodName, job, null);
 
         Map<String, Object> variables = job.getVariablesAsMap();
@@ -37,6 +37,6 @@ public class GetVariables1 {
                     }
                 });
 
-        if (log.isDebugEnabled()) logDebugExitJob(methodName, job);
+        if (log.isDebugEnabled()) log.debug("-----> {}: Exit job {} of instance {}",  methodName, job.getKey(), job.getProcessInstanceKey());
     }
 }
