@@ -1,1 +1,1 @@
-Main-Class: org.example.c8.Application
+Main-Class: org.example.Application

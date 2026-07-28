@@ -1,4 +1,4 @@
-package org.example.c8.utilities;
+package org.example.utilities;
 
 import io.camunda.client.api.response.ActivatedJob;
 import lombok.extern.slf4j.Slf4j;

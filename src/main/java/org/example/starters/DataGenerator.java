@@ -1,4 +1,4 @@
-package org.example.c8.starters;
+package org.example.starters;
 
 import io.camunda.client.CamundaClient;
 import io.camunda.client.api.response.DeploymentEvent;
@@ -7,8 +7,8 @@ import io.camunda.zeebe.model.bpmn.BpmnModelInstance;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import static org.example.c8.Application.isStartInstancesAsynchronous;
-import static org.example.c8.starters.ProcessInstanceStarter.startProcessInstances;
+import static org.example.Application.isStartInstancesAsynchronous;
+import static org.example.starters.ProcessInstanceStarter.startProcessInstances;
 
 @Component
 @Slf4j
@@ -24,13 +24,15 @@ public class DataGenerator {
         final String processPrefix = "process";
         final String decisionPrefix = "decision";
         final String decisionNamePrefix = "Decision Task ";
+        final int width = String.valueOf(numberOfModels).length();
 
         if (log.isDebugEnabled()) log.debug("-----> {}: Enter", methodName);
 
         for (int modelCount = 1; modelCount <= numberOfModels; modelCount++) {
-            final String processId = processPrefix + modelCount;
-            final String decisionId = decisionPrefix + modelCount;
-            final String decisionName = decisionNamePrefix + modelCount;
+            final String suffix = String.format("%0" + width + "d", modelCount);
+            final String processId = processPrefix + suffix;
+            final String decisionId = decisionPrefix + suffix;
+            final String decisionName = decisionNamePrefix + suffix;
 
             if (log.isDebugEnabled()) log.debug("-----> {}: Deploying processId {} and decisionId {}", methodName, processId, decisionId);
 

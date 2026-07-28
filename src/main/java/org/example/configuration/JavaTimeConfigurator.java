@@ -1,4 +1,4 @@
-package org.example.c8.configuration;
+package org.example.configuration;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

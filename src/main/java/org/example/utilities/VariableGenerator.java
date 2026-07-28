@@ -1,4 +1,4 @@
-package org.example.c8.utilities;
+package org.example.utilities;
 
 import org.springframework.stereotype.Component;
 

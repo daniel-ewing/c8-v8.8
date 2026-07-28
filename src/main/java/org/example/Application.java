@@ -1,4 +1,4 @@
-package org.example.c8;
+package org.example;
 
 import io.camunda.client.annotation.Deployment;
 import lombok.extern.slf4j.Slf4j;
@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
-import static org.example.c8.starters.DataGenerator.deployModels;
-import static org.example.c8.starters.ProcessInstanceStarter.startProcessInstances;
+import static org.example.starters.DataGenerator.deployModels;
+import static org.example.starters.ProcessInstanceStarter.startProcessInstances;
 
 @SpringBootApplication
 @Slf4j
@@ -34,7 +34,7 @@ public class Application {
         if (log.isDebugEnabled()) log.debug("-----> {}: Enter", methodName);
 
         if (isStartInstancesByCounter) startProcessInstances(3, isStartInstancesAsynchronous);
-        if (isStartInstancesByDataGenerator) deployModels(5, 5);
+        if (isStartInstancesByDataGenerator) deployModels(1000, 1);
 
         if (log.isDebugEnabled()) log.debug("-----> {}: Exit", methodName);
     }
