@@ -1,4 +1,4 @@
-package org.example.c8.workers;
+package org.example.workers;
 
 import io.camunda.client.annotation.JobWorker;
 import io.camunda.client.api.response.ActivatedJob;
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.example.c8.Application.isLogJobEnabled;
-import static org.example.c8.configuration.JavaTimeConfigurator.getDateTime;
-import static org.example.c8.utilities.Loggers.*;
+import static org.example.Application.isLogJobEnabled;
+import static org.example.configuration.JavaTimeConfigurator.getDateTime;
+import static org.example.utilities.Loggers.*;
 
 @Component
 @Slf4j

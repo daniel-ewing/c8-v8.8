@@ -1,4 +1,4 @@
-package org.example.c8.workers;
+package org.example.workers;
 
 import io.camunda.client.annotation.JobWorker;
 import io.camunda.client.api.response.ActivatedJob;
@@ -6,30 +6,30 @@ import io.camunda.client.api.worker.JobClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import static org.example.c8.Application.isLogJobEnabled;
-import static org.example.c8.utilities.Loggers.*;
+import java.util.Map;
+
+import static org.example.Application.isLogJobEnabled;
+import static org.example.utilities.Loggers.*;
 
 @Component
 @Slf4j
-public class SetVariables1 {
-
-    @JobWorker(type = "setVariables1", autoComplete = false)
-    public void handleSetVariables1(final JobClient client, final ActivatedJob job) {
-        final String methodName = "handleSetVariables1";
+public class GetVariables1 {
+    @JobWorker(type = "getVariables1", autoComplete = false)
+    public void handleGetVariables1(final JobClient client, final ActivatedJob job) {
+        final String methodName = "handleGetVariables1";
 
         if (log.isDebugEnabled()) log.debug("-----> {}: Enter job {} of instance {}",  methodName, job.getKey(), job.getProcessInstanceKey());
         if (isLogJobEnabled) logJob(methodName, job, null);
 
-        String variables =
-                "{" +
-                "\"anInteger1\": 1," +
-                "\"aString1\": \"string1\"" +
-                "}";
+        Map<String, Object> variables = job.getVariablesAsMap();
+        Integer anInteger1 = (Integer)variables.get("anInteger1");
+        String aString1 = (String)variables.get("aString1");
+        if (log.isDebugEnabled()) log.debug("-----> {}: anInteger1 = {}, aString1 = {}", methodName, anInteger1, aString1);
 
         // This is useful for when special handling of successful and / or unsuccessful job completion is necessary.
         // To use this, "autoComplete = false" must be set in the @JobWorker annotation.
         client.newCompleteCommand(job.getKey())
-                .variables(variables).send().whenComplete((result, exception) -> {
+                .send().whenComplete((result, exception) -> {
                     if (exception == null) {
                         if (log.isDebugEnabled()) log.debug("-----> {}: Completed job successfully", methodName);
                     } else {

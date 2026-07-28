@@ -50,5 +50,4 @@ logging:
 #  file:
 #    path: ./logs           # specify a path to write to file, otherwise it defaults to the console.
   level:
-    org.example: INFO
-#    org.example.c8: DEBUG
+    org.example: DEBUG

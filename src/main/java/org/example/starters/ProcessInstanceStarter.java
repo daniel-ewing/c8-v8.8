@@ -1,16 +1,16 @@
-package org.example.c8.starters;
+package org.example.starters;
 
 import io.camunda.client.CamundaClient;
 import io.camunda.client.api.response.ProcessInstanceEvent;
 import lombok.extern.slf4j.Slf4j;
-import org.example.c8.utilities.VariableGenerator;
+import org.example.utilities.VariableGenerator;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletionStage;
 
-import static org.example.c8.Application.*;
+import static org.example.Application.*;
 
 @Component
 @EnableScheduling
