@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_120v0n9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_120v0n9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.44.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.8.0">
   <bpmn:process id="process" name="Process" isExecutable="true">
     <bpmn:startEvent id="start" name="Start">
       <bpmn:outgoing>Flow_1l4nd2r</bpmn:outgoing>
@@ -10,6 +10,9 @@
     <bpmn:sequenceFlow id="Flow_1anlysz" sourceRef="task1" targetRef="end" />
     <bpmn:sequenceFlow id="Flow_1l4nd2r" sourceRef="start" targetRef="task1" />
     <bpmn:userTask id="task1" name="Task 1">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1l4nd2r</bpmn:incoming>
       <bpmn:outgoing>Flow_1anlysz</bpmn:outgoing>
     </bpmn:userTask>
