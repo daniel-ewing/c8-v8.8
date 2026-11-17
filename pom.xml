@@ -9,8 +9,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <spring.version>3.5.9</spring.version>
-        <camunda.sdk.version>8.8.4</camunda.sdk.version>
+        <httpclient5.version>5.6.4</httpclient5.version>
+        <spring.version>4.0.9</spring.version>
+        <camunda.sdk.version>8.8.40</camunda.sdk.version>
+<!--        <camunda.sdk.version>8.9.28</camunda.sdk.version>-->
+        <jackson.jsr310.version>2.21.8</jackson.jsr310.version>
         <lombok.version>1.18.34</lombok.version>
 
         <maven.version>3.13.0</maven.version>
@@ -21,6 +24,11 @@
 
     <dependencyManagement>
         <dependencies>
+<!--            <dependency>-->
+<!--                <groupId>org.apache.httpcomponents.client5</groupId>-->
+<!--                <artifactId>httpclient5</artifactId>-->
+<!--                <version>${httpclient5.version}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -41,11 +49,12 @@
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.jsr310.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.camunda</groupId>
-            <artifactId>camunda-spring-boot-starter</artifactId>
+            <artifactId>camunda-spring-boot-4-starter</artifactId>
             <version>${camunda.sdk.version}</version>
         </dependency>
 

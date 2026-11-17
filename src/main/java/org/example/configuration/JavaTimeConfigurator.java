@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import io.camunda.client.CamundaClient;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -25,11 +27,13 @@ public class JavaTimeConfigurator {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setDateFormat(dateFormat);
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
         // To store and retrieve a Date variable as a Gregorian date String according to the format specified in DEFAULT_DATE_FORMAT
         // In this case, the date variable is readable as formatted Gregorian date String in Operate
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-//        // To store and retrieve a Date variable as a Long - a Unix timestamp based on milliseconds
-//        // In this case, the date variable is readable as Long representing a timestamp in Operate
+
+        // To store and retrieve a Date variable as a Long - a Unix timestamp based on milliseconds
+        // In this case, the date variable is readable as Long representing a timestamp in Operate
 //        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
 
         objectMapper.registerModule(new JavaTimeModule());
@@ -37,4 +41,9 @@ public class JavaTimeConfigurator {
         return objectMapper;
     }
 
+    @Bean
+    CommandLineRunner jsonMapperCheck(CamundaClient client) {
+        return args -> System.out.println("Camunda JsonMapper: "
+                + client.getConfiguration().getJsonMapper().getClass().getName());
+    }
 }

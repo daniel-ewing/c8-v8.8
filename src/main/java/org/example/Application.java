@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
-import static org.example.starters.DataGenerator.deployModels;
 import static org.example.starters.ProcessInstanceStarter.startProcessInstances;
 
 @SpringBootApplication
@@ -20,8 +19,8 @@ public class Application {
     public final static boolean isStartInstancesByCounter = true;
     public final static boolean isStartInstancesByDataGenerator = false;
     public final static boolean isStartInstancesAsynchronous = true;
-//    public final static String defaultProcessKey = "process";
-    public final static String defaultProcessKey = "simple-variables";
+    public final static String defaultProcessKey = "testProcess";
+//    public final static String defaultProcessKey = "simple-variables";
 
     public static void main(final String... args) {
         SpringApplication.run(Application.class, args);
@@ -33,8 +32,7 @@ public class Application {
 
         if (log.isDebugEnabled()) log.debug("-----> {}: Enter", methodName);
 
-        if (isStartInstancesByCounter) startProcessInstances(3, isStartInstancesAsynchronous);
-        if (isStartInstancesByDataGenerator) deployModels(1000, 1);
+        if (isStartInstancesByCounter) startProcessInstances(1, isStartInstancesAsynchronous);
 
         if (log.isDebugEnabled()) log.debug("-----> {}: Exit", methodName);
     }
